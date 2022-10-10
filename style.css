@@ -613,6 +613,7 @@ body {
 }
 
 .buttonClass2{
+   display: inline;
    border-radius: 3px;
    margin: 10px;
    width: 25%;
@@ -620,6 +621,7 @@ body {
  }
  
  .buttonClass2:hover {
+   cursor: pointer;
    background: #f6f6f6
  }
                
@@ -637,4 +639,15 @@ body {
    font-family: monospace;
    font-size: 9pt;
    padding: 3px;
+ }
+ 
+ #tela_info_plugin{
+   text-decoration: transparent;
+ }
+
+ .input_invisivel{
+   color: transparent;
+   border: none;
+   width: 000.1px;
+   height: 000.1px;
  }

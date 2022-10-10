@@ -70,10 +70,15 @@ function esconde_tela_proc(){
     esconde_recurso();
   }
 
-function importar_txt(){
-  alert("copiado!");
-}
+var t = document.getElementById('mostrar_opt_plugin');
 
+function mostra_opt_plugins(){
+  if (t.style.display === 'none') {
+  t.style.display = 'block';
+  } else {
+    t.style.display = 'none';
+  }
+}
 z = document.getElementById('txt_copiado')
 
 function esconde_copy(){
@@ -94,5 +99,36 @@ function mostra_copy(){
 function copiar_imp_txt(){
     document.querySelector("#importa_txt").select();  
     document.execCommand("copy");
+    mostra_copy();
 }
 
+function esconder_plugin_imp(){
+  var imp = document.getElementsByClassName('plugin_imp')[0];
+  imp.style.display = "none";
+}
+
+function esconder_plugin_imp(){
+  var imp = document.getElementsByClassName('plugin_imp'),i,len;
+  for (i = 0, len = imp.length; i < len; i++) {  
+  imp[i].style.display = "none";
+  }
+}
+
+
+function esconder_plugin_exp(){
+  var exp = document.getElementsByClassName('plugin_exp'),i,len;
+  for (i = 0, len = exp.length; i < len; i++) {  
+  exp[i].style.display = "none";
+  }
+}
+
+function mostra_todos_plugins(){
+  var imp = document.getElementsByClassName('plugin_imp'),i,len;
+  for (i = 0, len = imp.length; i < len; i++) {  
+  imp[i].style.display = "inline";
+  };
+  var exp = document.getElementsByClassName('plugin_exp'),i,len;
+  for (i = 0, len = exp.length; i < len; i++) {  
+  exp[i].style.display = "inline";
+  };
+}

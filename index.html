@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>123</title>
 	<!-- CSS only -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -32,66 +32,72 @@
     </div>
     <!--Container Main start-->
     <div class="height-100 bg-light">
-		<div id="page_proc">
-			<nav class="slidemenu">
-  
-				<!-- Item 1 -->
-				<input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
-				<label for="slide-item-1"><p class="icon">ϟ</p><span>Plugins</span></label>
-				
-				<!-- Item 2 -->
-				<input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
-				<label for="slide-item-2"><p class="icon">⍞</p><span>Etiqueta</span></label>
-				
-				<!-- Item 3 -->
-				<input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
-				<label for="slide-item-3"><p class="icon">▤</p><span>Planilha</span></label>
-				
-				<!-- Item 4 -->
-				<input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
-				<label for="slide-item-4"><p class="icon">+</p><span>Campo add</span></label>
-				
-				<div class="clear"></div>
-				
-				<!-- Bar -->
-				<div class="slider">
-				  <div class="bar"></div>
-				</div>
-			  </nav>
-			<div style="display:none;">
-				<input type="text" value="plugin.importa.txt" id="importa_txt"></span>
-			</div>
-			  <div id="tela_plugins">
-				<form class="search-container">
-					<input type="text" id="search-bar" placeholder="Buscar plugins">
-					<a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-				  </form>
-				  <br>
-				  <p id="txt_mostra_plugin">Clique para mostrar todos os plugins:</p>
-			  </div>
-			  <br>
-			  <div id="div_mostra_plugin">
-				<button id="btn_mostra_plugin">↓</button>
-			</div>
-			<div>
-				<div class="radio">
-					<input label="Todos" type="radio" id="radio_todos_plugins" name="gender" value="todos" checked>
-					<input label="Importação" type="radio" id="radio_plugin_imp" name="gender" value="Importação">
-					<input label="Exportação" type="radio" id="radio_plugin_exp" name="gender" value="Exportação">
-				</div>
-			</div>
-				<br><br>
-				<div id="txt_msg_copy">
-					<span>Clique no plugin para copiá-lo <i class='bx bxs-pencil'></i></span>
-						<br> 
-						<div>
-							<span id="txt_copiado" style="display:none;">plugin copiado com sucesso!</span>
+				<div id="page_proc">
+					<nav class="slidemenu">
+		
+						
+						<input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
+						<label for="slide-item-1"><p class="icon">ϟ</p><span>Plugins</span></label>
+						
+						
+						<input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+						<label for="slide-item-2"><p class="icon">⍞</p><span>Etiqueta</span></label>
+						
+						
+						<input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+						<label for="slide-item-3"><p class="icon">▤</p><span>Planilha</span></label>
+						
+						
+						<input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+						<label for="slide-item-4"><p class="icon">+</p><span>Campo add</span></label>
+						
+						<div class="clear"></div>
+						
+					
+						<div class="slider">
+						<div class="bar"></div>
 						</div>
-				</div>
-				<br><br>
-			<div id="lista_botoes">
-				<button onclick="copiar_imp_txt()" class="buttonClass2" id="plugin_imp">Importar TXT</button>
-			</div>
+					</nav>
+					<div id="tela_info_plugin">
+						<input type="text" class="input_invisivel" value="plugin.importa.txt" id="importa_txt"></span>
+					</div>
+					<div id="tela_plugins">
+						<form class="search-container">
+							<input type="text" id="search-bar" placeholder="Buscar plugins">
+							<a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+						</form>
+						<br>
+						<p id="txt_mostra_plugin">Clique para mostrar todos os plugins:</p>
+					</div>
+					<br>
+					<div id="div_mostra_plugin">
+						<button id="btn_mostra_plugin" onclick="mostra_opt_plugins()">↓</button>
+					</div>
+					<div id="mostrar_opt_plugin">
+						<div>
+							<div class="radio">
+								<input label="Todos" onclick="mostra_todos_plugins()" type="radio"  id="radio_todos_plugins" name="gender" value="todos" checked>
+								<input label="Importação" onclick="esconder_plugin_exp()" type="radio" id="radio_plugin_imp" name="gender" value="Importação">
+								<input label="Exportação" onclick="esconder_plugin_imp()" type="radio" id="radio_plugin_exp" name="gender" value="Exportação">
+							</div>
+						</div>
+							<br><br>
+							<div id="txt_msg_copy">
+								<span>Clique no plugin para copiá-lo <i class='bx bxs-pencil'></i></span>
+									<br>
+									<div>
+										<span id="txt_copiado" style="display:none;">plugin copiado com sucesso!</span>
+									</div>
+							</div>
+							<br><br>
+						<div id="lista_botoes">
+							<button onclick="copiar_imp_txt()" class="buttonClass2 plugin_imp">Importar TXT</button>
+							<button onclick="copiar_imp_txt()" class="buttonClass2 plugin_imp">Importar XLS</button>
+							<button onclick="copiar_imp_txt()" class="buttonClass2 plugin_exp">Exportar CVL	</button>
+							<button onclick="copiar_imp_txt()" id="teste1" class="buttonClass2 plugin_exp">Exportar CVL2</button>
+						
+						</div>
+					</div>
 			
 			 
 			  <!-- <div class="lista_botoes">
