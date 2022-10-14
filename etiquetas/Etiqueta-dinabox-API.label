@@ -1,0 +1,9 @@
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,20,70,250,28,'Arial',14,1,1,0,'Cliente: $P{cliente} ',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,20,40,250,28,'Arial',14,1,1,0,'Modulo: $P{modulo} ',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,20,10,313,28,'Arial',14,1,1,0,'Peça: $P{peca_id} - $P{description}',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,19,100,274,28,'Arial',14,1,1,0,'Dimensões: $P{lenght} X $P{width} X $M{thickness} ',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,5,195,222,50,'Arial',10,1,5,0,'$P{furacao_a}',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,332,26,150,150,'Arial',10,1,4,0,'$B{description}',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,244,194,250,50,'Arial',10,1,5,0,'$P{furacao_b}',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,20,130,250,28,'Arial',14,1,1,0,'Ambiente: $P{ambiente} ',${label},false,'');
+insert into labelfieldentry (number,x,y,width,height,fontname,fontsize,align,fieldtype,direction,value,label,whiteBlack,background) values (0,20,160,250,28,'Arial',12,1,1,0,'Obs: $P{observacao} ',${label},false,'');

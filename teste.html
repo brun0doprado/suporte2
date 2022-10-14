@@ -37,175 +37,13 @@
     <div class="height-100 bg-light">
 		
 		
-		Arquivo (.csv) <input id="fileCsvUp" type="file" name="csv_file"><br>
+		<!-- Arquivo (.csv) <input id="fileCsvUp" type="file" name="csv_file"><br>
 		<button id="btnConverter">Converter</button>
 		<br/>
 		<div id="conteudo">
-			<input type="textarea">
-		</div>
-		<div id="slide_tela_planilha">
-			<span id="titulo_planilha">Digite abaixo o nome do cliente que está sendo criada a planilha</span><br>
-			<input id="txt_nome_cliente" type="text"><br>
-			<span id="sub_titulo_planilha">Digite abaixo o campo que deseja incluir depois clique em "Add" para adicioná-lo a sua tabela</span>
-			<div id="modal_adicionar_campo" style="display:none;">
-				<div id="conteudo_modal_campo">
-					testando modal
-					<button>ok</button>>
-				</div>
-			  </div>
-			  
-			<div><br>
-				
-				<!-- <button id="btn_gerar_nova_planilha">+ Gerar Nova Planilha</button>
-				<button>criar novo campo</button>
-				<div> -->
-					<input type="text" id="txt_nome_campo">
-					<!-- <button target="abrirModal">modal</button> -->
-					<button onclick="novo_campo_tabela()" id="btn_add_nome_campo">add</button>
-					<button id="btn_fita_4_lados" 
-					class="btn_escolher_fita" onclick="gerar_campo_fita_lados()">Fita nos 4 lados</button>
-					<button id="btn_fita_peca" class="btn_escolher_fita"  onclick="gerar_campo_fita_unico()">Fita na Peça</button>
-				</div>
-				<div id="estrutura_script" style="display:none;">
-					void parseLine(String line, Part part) {
-	String[] array = line.split(";");
-	
-	Material material = ObjectUtility.findMaterialByCode(array[8].trim(), materials);
-	if (material != null) {
-		part.setMaterial(material.getId());
-	} 
 
-	part.setRotate(material.canRotate()); // can rotate
-
-	<div id="lista_campos_script">
-		part.setCode(array[14]);
-		part.setDescription(array[15]);
-		part.setLenght(Parser.parseDouble(array[5].trim()));
-		part.setWidth(Parser.parseDouble(array[6].trim()));
-		part.setQuantity(Parser.parseInteger(array[4].trim()));
-		<p>part.putAddField("<p>cod_cliente</p>", array[<p>0</p>].trim());</p>
-	</div>
-	
-	
-	if (Parser.parseInteger(configuration.getProperty("com.plugin.promobstart.indeximage.type")) == 1) {
-		String fileImgName = Parser.getFileName(array[24].trim());
-		String fileImportingFolder = Parser.getFileFolder(file);
-		part.putAddField("path_bmp", fileImportingFolder + File.separator + fileImgName);
-	} else {
-		part.putAddField("path_bmp", array[24].trim());
-	}
-	
-	//border
-	if (Parser.parseInteger(array[20].trim()) == 1) {// top
-		part.setTopborder(1);
-	}
-	if (Parser.parseInteger(array[21].trim()) == 1) {// bottom
-		part.setBottomborder(1);
-	}
-	if (Parser.parseInteger(array[22].trim()) == 1) {// left
-		part.setLeftborder(1);
-	}
-	if (Parser.parseInteger(array[23].trim()) == 1) {// right
-		part.setRightborder(1);
-	}
-}
-
-String getMaterial(String line) {
-	String[] array = line.split(";");
-	String materialcode = array[8].trim();
-	
-	Material material = ObjectUtility.findMaterialByCode(materialcode, materials);
-	if (material == null) {
-		material = new Material();
-		material.setCode(materialcode);
-		material.setDescription(array[9]);//description
-		material.setLenght(Parser.parseDouble(array[10].trim()));//lenght
-		material.setWidth(Parser.parseDouble(array[11].trim()));//width
-		material.setThickness(Parser.parseInteger(array[7].trim()));//thickness - espessura
-		material.setSaw(4.4);
-		material.setTrimming(10.0);
-				material.setStackMax(60);
-		if (Parser.parseInteger(array[19].trim()) == 1) {// has grain
-			material.setHasgrain(true);// if false can rotate, if true cannot rotate
-		} else {
-			material.setHasgrain(false);// if false can rotate, if true cannot rotate
-		}
-		materials.add(material);
-	}
-
-	return materialcode;
-}
-
-String getBorder(String line, int typea) {
-	Border border = ObjectUtility.findBorderByCode("1", borders);
-	if(border == null) {
-		border = new Border();
-		border.setCode("1");
-		border.setDescription("1");
-		borders.add(border);
-	}
-	return "1";
-}
-
-boolean canCreateWriterPane() {
-	return false;
-}
-
-boolean isAutoCreateCode() {
-	return false;
-}
-
-boolean isDirectorySelector() {
-	return false;
-}
-
-boolean isIgnoreFirstLine() {
-	return true;
-}
-				</div>
-				<div id="div_tabela">
-					<table id="tabela_criada">
-						<input type="hidden" id="num_contato">
-							<thead>
-								<tr id="linha_coluna_tabela">
-									<th>
-										Peca
-									</th>
-									<th>
-										Quantidade
-									</th>
-									<th>
-										Comprimento
-									</th>
-									<th>
-										Largura
-									</th>
-									<th>
-										Material
-									</th>
-								</tr>
-							</thead>
-						<tbody id="tbody">
-						</tbody>
-					</table>
-				</div>
-				<div>
-					<button class="btn_download" id="btnExportarXls" onclick="gerar_planilha()">Baixar Planilha <i class='bx bx-download'></i></button>
-						<br>
-					<button class="btn_download" id="btnExportarScript" onclick="download_script()">Baixar Script <i class='bx bxs-download' ></i></button>
-					<br>
-					<br>
-					<span class="titulo">Mostrar lista gerada dos campos</span>
-					<br>
-					<br><button id="botao_mostrar_lista" onclick="mostra_lista_campos_par()"><i class='bx bx-down-arrow-alt' ></i></button>
-				</div><br>
-				<div id="div_lista_campos_parametros" style="display:none;">
-					<ul id="lista_campos_criados_parametros" class="lista_campos">
-						Itens para adicionar no Mapeamento de lista de Peças:
-					</ul>
-				</div>
-			</div>
-		</div>
+		</div> -->
+			 
 			  <!-- <div class="lista_botoes">
 				<div class="buttons">
 					<div class="container">
@@ -312,6 +150,7 @@ boolean isIgnoreFirstLine() {
 					<input type="text" class="input_invisivel" value="plugin.maquina.nanxing" id="exporta_nanxing">
 					<input type="text" class="input_invisivel" value="plugin.maquina.putsch-meniconi" id="exporta_putsch">
 					<input type="text" class="input_invisivel" value="plugin.maquina.dxf" id="exporta_dxf">
+					<input type="text" class="input_invisivel" value="plugin.maquina.alca-cnc" id="exporta_alca_cnc">
 				</div>
 				
 				<div id="tela_plugins">
@@ -363,6 +202,7 @@ boolean isIgnoreFirstLine() {
 						<button onclick="copiar_exp_putsch()" id="teste1" class="buttonClass2 plugin_exp">Exportar Putsch</button>
 						<button onclick="copiar_exp_dxf()" id="teste1" class="buttonClass2 plugin_exp">Exportar DXF</button>
 						<button onclick="copiar_exp_inmes_auto()" id="teste1" class="buttonClass2 plugin_exp">Exportar Inmes V30 Automatic</button>
+						<button onclick="copiar_exp_alca_cnc()" id="teste1" class="buttonClass2 plugin_exp">Exportar Alca CNC</button>
 					</div>
 				</div>
 			</div>
@@ -373,6 +213,10 @@ boolean isIgnoreFirstLine() {
 				</div>
 				<div id="lista_botoes_etiqueta">
 					<a href="etiquetas/Etiqueta-dinabox-API.label" onclick="mostra_campos_etiqueta_dinabox()" class="button_etiqueta">Dinabox API <i class='bx bx-download' ></i></a>
+					
+				</div><br><br><br>
+				<div id="lista_botoes_etiqueta">
+					<a href="etiquetas/Etiqueta-dinabox-API.label" onclick="mostra_campos_etiqueta_promob()" class="button_etiqueta">Promob Start<i class='bx bx-download' ></i></a>
 					
 				</div>
 				<div class="detalhe_campos"  id="detalhe_campos_dinabox" style="display:none;">
@@ -395,8 +239,189 @@ boolean isIgnoreFirstLine() {
 						<button onclick="esconde_campos_etiqueta_dinabox()" class="btn_ok">OK</button>
 					</div>
 				</div>
+				<div class="detalhe_campos"  id="detalhe_campos_promob_start" style="display:none;">
+					<br>
+					<span class="txt_detalhe">Para usar esta opção <span class="txt_meio_detalhe">"Promob Start"</span>, abra o Cut Planning → em Configurações → Mapeamento de Lista de Peças e adicione os seguintes campos, todos em formato <span class="txt_string">string</span></span>
+					<br><br>
+					<div id="lista_campos_dinabox">
+						<ul class="lista_campos">
+							<li type="none">nome_cliente</li>
+							<li type="none">ambiente</li>
+							<li type="none">modulo_usado</li>
+							<li type="none">path_bmp</li>
+							<li type="none">prog_1</li>
+							<li type="none">prog_2</li>
+							<li type="none">observacoes</li>
+						</ul>
+					</div>
+					<div>
+						<button onclick="esconde_campos_etiqueta_promob()" class="btn_ok">OK</button>
+					</div>
+				</div>
 			</div>
-			
+			<div id="slide_tela_planilha" style="display:none;">
+				<span id="titulo_planilha">Digite abaixo o nome do cliente que está sendo criada a planilha</span><br>
+				<input id="txt_nome_cliente" type="text"><br>
+				<span id="sub_titulo_planilha">Digite abaixo o campo que deseja incluir depois clique em "Add" para adicioná-lo a sua tabela</span>
+				<div id="modal_adicionar_campo" style="display:none;">
+					<div id="conteudo_modal_campo">
+						testando modal
+						<button>ok</button>>
+					</div>
+				  </div>
+				  
+				<div><br>
+					
+					<!-- <button id="btn_gerar_nova_planilha">+ Gerar Nova Planilha</button>
+					<button>criar novo campo</button>
+					<div> -->
+						<input type="text" id="txt_nome_campo">
+						<!-- <button target="abrirModal">modal</button> -->
+						<button onclick="novo_campo_tabela()" id="btn_add_nome_campo">add</button>
+						<button id="btn_fita_4_lados" 
+						class="btn_escolher_fita" onclick="gerar_campo_fita_lados()">Fita nos 4 lados</button>
+						<button id="btn_fita_peca" class="btn_escolher_fita"  onclick="gerar_campo_fita_unico()">Fita na Peça</button>
+					</div>
+					<div id="estrutura_script" style="display:none;">
+						void parseLine(String line, Part part) {
+		String[] array = line.split(";");
+		
+		Material material = ObjectUtility.findMaterialByCode(array[8].trim(), materials);
+		if (material != null) {
+			part.setMaterial(material.getId());
+		} 
+	
+		part.setRotate(material.canRotate()); // can rotate
+	
+		<div id="lista_campos_script">
+			part.setCode(array[14]);
+			part.setDescription(array[15]);
+			part.setLenght(Parser.parseDouble(array[5].trim()));
+			part.setWidth(Parser.parseDouble(array[6].trim()));
+			part.setQuantity(Parser.parseInteger(array[4].trim()));
+			<p>part.putAddField("<p>cod_cliente</p>", array[<p>0</p>].trim());</p>
+		</div>
+		
+		
+		if (Parser.parseInteger(configuration.getProperty("com.plugin.promobstart.indeximage.type")) == 1) {
+			String fileImgName = Parser.getFileName(array[24].trim());
+			String fileImportingFolder = Parser.getFileFolder(file);
+			part.putAddField("path_bmp", fileImportingFolder + File.separator + fileImgName);
+		} else {
+			part.putAddField("path_bmp", array[24].trim());
+		}
+		
+		//border
+		if (Parser.parseInteger(array[20].trim()) == 1) {// top
+			part.setTopborder(1);
+		}
+		if (Parser.parseInteger(array[21].trim()) == 1) {// bottom
+			part.setBottomborder(1);
+		}
+		if (Parser.parseInteger(array[22].trim()) == 1) {// left
+			part.setLeftborder(1);
+		}
+		if (Parser.parseInteger(array[23].trim()) == 1) {// right
+			part.setRightborder(1);
+		}
+	}
+	
+	String getMaterial(String line) {
+		String[] array = line.split(";");
+		String materialcode = array[8].trim();
+		
+		Material material = ObjectUtility.findMaterialByCode(materialcode, materials);
+		if (material == null) {
+			material = new Material();
+			material.setCode(materialcode);
+			material.setDescription(array[9]);//description
+			material.setLenght(Parser.parseDouble(array[10].trim()));//lenght
+			material.setWidth(Parser.parseDouble(array[11].trim()));//width
+			material.setThickness(Parser.parseInteger(array[7].trim()));//thickness - espessura
+			material.setSaw(4.4);
+			material.setTrimming(10.0);
+					material.setStackMax(60);
+			if (Parser.parseInteger(array[19].trim()) == 1) {// has grain
+				material.setHasgrain(true);// if false can rotate, if true cannot rotate
+			} else {
+				material.setHasgrain(false);// if false can rotate, if true cannot rotate
+			}
+			materials.add(material);
+		}
+	
+		return materialcode;
+	}
+	
+	String getBorder(String line, int typea) {
+		Border border = ObjectUtility.findBorderByCode("1", borders);
+		if(border == null) {
+			border = new Border();
+			border.setCode("1");
+			border.setDescription("1");
+			borders.add(border);
+		}
+		return "1";
+	}
+	
+	boolean canCreateWriterPane() {
+		return false;
+	}
+	
+	boolean isAutoCreateCode() {
+		return false;
+	}
+	
+	boolean isDirectorySelector() {
+		return false;
+	}
+	
+	boolean isIgnoreFirstLine() {
+		return true;
+	}
+					</div>
+					<div id="div_tabela">
+						<table id="tabela_criada">
+							<input type="hidden" id="num_contato">
+								<thead>
+									<tr id="linha_coluna_tabela">
+										<th>
+											Peca
+										</th>
+										<th>
+											Quantidade
+										</th>
+										<th>
+											Comprimento
+										</th>
+										<th>
+											Largura
+										</th>
+										<th>
+											Material
+										</th>
+									</tr>
+								</thead>
+							<tbody id="tbody">
+							</tbody>
+						</table>
+					</div>
+					<div>
+						<button class="btn_download" id="btnExportarXls" onclick="gerar_planilha()">Baixar Planilha <i class='bx bx-download'></i></button>
+							<br>
+						<button class="btn_download" id="btnExportarScript" onclick="download_script()">Baixar Script <i class='bx bxs-download' ></i></button>
+						<br>
+						<br>
+						<span class="titulo">Mostrar lista gerada dos campos</span>
+						<br>
+						<br><button id="botao_mostrar_lista" onclick="mostra_lista_campos_par()"><i class='bx bx-down-arrow-alt' ></i></button>
+					</div><br>
+					<div id="div_lista_campos_parametros" style="display:none;">
+						<ul id="lista_campos_criados_parametros" class="lista_campos">
+							Itens para adicionar no Mapeamento de lista de Peças:
+						</ul>
+					</div>
+				</div>
+			</div>
 			<!-- <div id="slide_tela_planilha">
 				Teste Planilha
 				<div>
